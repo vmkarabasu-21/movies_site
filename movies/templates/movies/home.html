@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Movie Website</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+    background: #0f1720;
+    color: white;
+}
+
+/* NAVBAR */
+.nav {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    padding: 25px 60px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 10;
+}
+
+.logo {
+    font-size: 28px;
+    font-weight: bold;
+    color: #e50914;
+}
+
+.nav a {
+    color: #ffffff;
+    text-decoration: none;
+    margin-left: 25px;
+    font-size: 14px;
+}
+
+/* HERO BANNER */
+.hero {
+    height: 100vh;
+    background:
+        linear-gradient(
+            to right,
+            rgba(15,23,32,0.95),
+            rgba(15,23,32,0.6),
+            rgba(15,23,32,0.2)
+        ),
+        url("https://i.pinimg.com/1200x/09/26/7f/09267fa6faa74dd6ff135ef2f78e68a8.jpg")
+        center / cover no-repeat;
+
+    display: flex;
+    align-items: center;
+    padding: 0 80px;
+}
+
+.content {
+    max-width: 650px;
+}
+
+.content h1 {
+    font-size: 64px;
+    margin-bottom: 15px;
+}
+
+.content p {
+    font-size: 18px;
+    color: #e5e7eb;
+    line-height: 1.6;
+    margin-bottom: 35px;
+}
+
+/* BUTTONS */
+.buttons {
+    display: flex;
+    gap: 15px;
+}
+
+.btn {
+    padding: 14px 28px;
+    font-size: 16px;
+    border-radius: 6px;
+    border: none;
+    cursor: pointer;
+}
+
+.primary {
+    background: #e50914;
+    color: white;
+}
+
+.secondary {
+    background: rgba(255,255,255,0.15);
+    color: white;
+}
+
+.btn:hover {
+    opacity: 0.9;
+}
+/* container for right-side buttons (optional but recommended) */
+.nav-actions {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    display: flex;
+    gap: 12px;
+}
+
+/* common button style */
+.nav-btn {
+    padding: 8px 18px;
+    font-size: 14px;
+    font-weight: 600;
+    border-radius: 4px;
+    text-decoration: none;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    border: none;
+}
+
+/* signup button (red) */
+.nav-btn.signup {
+    background-color: #e50914;
+    color: white;
+}
+
+.nav-btn.signup:hover {
+    background-color: #f40612;
+}
+
+/* login button (outline style) */
+.nav-btn.login {
+    background-color: #e50914;
+    color: white;
+    border: 1px solid rgba(255,255,255,0.6);
+}
+
+.nav-btn.login:hover {
+    background: rgba(255,255,255,0.1);
+}
+.nav-btn.signup:hover {
+    background: rgba(255,255,255,0.1);
+}
+
+
+</style>
+</head>
+
+<body>
+
+<!-- NAV -->
+<div class="nav">
+    <div class="logo">MOVIE+</div>
+    <div>
+        <a href="/signup/" class="nav-btn signup">Sign Up</a>
+        <a href="/Login/" class="nav-btn login">Login</a>
+
+    </div>
+</div>
+
+<!-- HERO -->
+<div class="hero">
+    <div class="content">
+        <h1>Unlimited Movies</h1>
+        <p>
+            Discover movies, explore details, and enjoy a cinematic experience
+            all in one place.
+        </p>
+
+        <div class="buttons">
+            <a href="/movie_list/">
+                <button class="btn primary">🎬 Browse Movies</button>
+            </a>
+            <button class="btn secondary">Learn More</button>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

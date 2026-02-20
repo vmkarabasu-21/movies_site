@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie Detail</title>
+
+    <style>
+body {
+    margin: 0;
+    background: #141414;
+    color: #fff;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.detail-container {
+    display: flex;
+    gap: 50px;
+    padding: 60px;
+    align-items: flex-start;
+}
+
+.poster img {
+    width: 320px;
+    border-radius: 12px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.9);
+}
+
+.info {
+    max-width: 700px;
+}
+
+.info h1 {
+    color: #e50914;
+    font-size: 42px;
+    margin-bottom: 15px;
+}
+
+.info p {
+    font-size: 17px;
+    margin: 10px 0;
+    color: #b3b3b3;
+    line-height: 1.6;
+}
+
+.info b {
+    color: #ffffff;
+}
+
+.trailer {
+    margin-top: 30px;
+}
+
+.trailer iframe {
+    width: 100%;
+    height: 200px;
+    border-radius: 12px;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.8);
+}
+
+.back-btn {
+    display: inline-block;
+    margin-top: 30px;
+    padding: 12px 26px;
+    border: 1px solid #e50914;
+    color: #e50914;
+    text-decoration: none;
+    border-radius: 4px;
+    transition: 0.3s;
+}
+
+.back-btn:hover {
+    background: #e50914;
+    color: #fff;
+}
+
+/* Mobile Responsive */
+@media (max-width: 900px) {
+    .detail-container {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .poster img {
+        width: 260px;
+    }
+
+    .info {
+        max-width: 100%;
+    }
+
+    .trailer iframe {
+        height: 240px;
+    }
+}
+.trailer{
+    display: inline-block;
+    padding: 12px 26px;
+    background-color: #e50914;
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 16px;
+    border-radius: 4px;
+    margin-top: 10px;
+    transition: 0.3s;
+}
+
+.trailer-btn:hover {
+    background-color: #f40612;
+}
+/* Rating section */
+.rating-box {
+    margin-top: 20px;
+}
+
+.rating-box p {
+    margin-bottom: 8px;
+    font-size: 16px;
+    color: #fff;
+}
+/* Star Rating Container */
+.star-rating {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: flex-end;
+    gap: 5px;
+    margin: 15px 0;
+}
+
+/* Hide radio buttons */
+.star-rating input {
+    display: none;
+}
+
+/* Star look */
+.star-rating label {
+    font-size: 32px;
+    color: #444;
+    cursor: pointer;
+    transition: color 0.2s ease, transform 0.2s ease;
+}
+
+/* Hover effect */
+.star-rating label:hover,
+.star-rating label:hover ~ label {
+    color: #e50914;
+    transform: scale(1.1);
+}
+
+/* Selected stars */
+.star-rating input:checked ~ label {
+    color: #e50914;
+}
+
+/* Submit button */
+.rate-btn {
+    padding: 10px 22px;
+    background: #e50914;
+    border: none;
+    color: white;
+    font-weight: bold;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.rate-btn:hover {
+    background: #f40612;
+}
+
+textarea {
+    width: 100%;
+    height: 120px;
+    padding: 12px;
+    background: #1f1f1f;
+    border: 1px solid #444;
+    color: white;
+    border-radius: 6px;
+}
+
+.review-box {
+    background: #1a1a1a;
+    padding: 15px;
+    border-radius: 6px;
+    margin-top: 15px;
+}
+.watchlist-top-btn {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+
+    background: #e50914;
+    backdrop-filter: blur(6px);
+
+    color:white;
+    border: 1px solid rgba(255,255,255,0.2);
+    padding: 8px 12px;
+    border-radius: 10px;
+
+    font-size: 13px;
+    font-weight: bold;
+    cursor: pointer;
+
+    display: flex;
+    align-items: center;
+    gap: 6px;
+
+    transition: 0.3s;
+}
+
+/* Hover */
+.watchlist-top-btn:hover {
+    background: #e50914;
+    border-color: #e50914;
+    transform: scale(1.05);
+}
+.platform-link {
+    display: inline-block;
+    background: #e50914;
+    color: white;
+    padding: 8px 16px;
+    border-radius: 20px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: 0.3s ease;
+}
+
+.platform-link:hover {
+    background: #ff1e1e;
+    transform: scale(1.05);
+}
+.platform-section {
+    margin-top: 30px;
+}
+
+.platform-logo img {
+    width: 120px;
+    transition: 0.3s ease;
+}
+
+.platform-logo img:hover {
+    transform: scale(1.1);
+}
+.ott-section {
+    margin-top: 18px;
+}
+
+.ott-btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #e50914;   /* Netflix red default */
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 600;
+    border-radius: 6px;
+    border: none;
+    transition: all 0.25s ease;
+}
+
+.ott-btn:hover {
+    background-color: #b20710;
+    color: #ffffff;
+    transform: scale(1.05);
+}
+.watchlist-btn {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+
+    background: linear-gradient(135deg, #ff4d4d, #ff0000);
+    color: white;
+    padding: 10px 18px;
+    border-radius: 25px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 14px;
+
+    box-shadow: 0 4px 12px rgba(255, 0, 0, 0.4);
+    transition: all 0.3s ease;
+    z-index: 1000;
+}
+
+.watchlist-btn:hover {
+    transform: scale(1.05);
+    background: linear-gradient(135deg, #ff0000, #cc0000);
+}
+.detail-container {
+    position: relative;
+}
+
+
+</style>
+</head>
+
+
+<body>
+
+    {% load static %}
+
+<div class="detail-container">
+
+    <div class="poster">
+        {% if movie.poster %}
+            <img src="{{ movie.poster.url }}" alt="" width="100%">
+        {% endif %}
+    </div>
+
+    <div class="info">
+        <h1>{{ movie.title }}</h1>
+        <p><b>Year:</b> {{ movie.year }}</p>
+        <p><b>Language:</b> {{ movie.language }}</p>
+        <p><b>description:</b>{{movie.description}}</p>
+        <p><b>category:</b>{{movie.category}}</p>
+
+<form method="post" action="/rate/{{ movie.id }}/">
+ {% csrf_token %}
+
+
+    <p><b>Rate this movie:</b></p>
+   <div class="star-rating">
+    
+
+      <input type="radio" name="stars" value="5" id="star5" required>
+      <label for="star5">★</label>
+
+      <input type="radio" name="stars" value="4" id="star4">
+      <label for="star4">★</label>
+
+      <input type="radio" name="stars" value="3" id="star3">
+      <label for="star3">★</label>
+
+      <input type="radio" name="stars" value="2" id="star2">
+      <label for="star2">★</label>
+
+      <input type="radio" name="stars" value="1" id="star1">
+      <label for="star1">★</label>
+
+   </div>
+
+   <button type="submit" class="rate-btn">submit Rating</button>
+
+</form>
+
+
+   <h3>Write a review</h3>
+   <form method="post" action="/review/{{ movie.id }}/">
+    {% csrf_token %}
+    <textarea name="comment" placeholder="write your review...." required id=""></textarea>
+    <br><br>
+    <button type="submit" class="rate-btn">submit Review</button>
+   </form>
+
+ 
+
+
+    <p><b>Average Rating:</b> ⭐ {{ movie.average_rating }} / 5</p>
+    <div>
+   
+    <a href="{% url 'add_watchlist' movie.id %}" class="watchlist-btn">Add to watchlist</a>
+
+
+
+
+
+
+
+</form>
+{% if movie.trailer_url %}
+          <div class="trailer">
+            <a href="{{movie.trailer_url}}" target="_blank" class="trailer">
+                 ▶ Watch Trailer on YouTube
+            </a>
+               
+           </div>
+        {% endif %} 
+       
+
+    </div>
+<h3> ▶ Available on</h3>
+{% if movie.ott_name and movie.ott_url %}
+<div class="ott-section">
+    <a href="{{ movie.ott_url }}" target="_blank" class="ott-btn">
+        ▶Watch on
+        {{ movie.ott_name }}
+    </a>
+</div>
+{% endif %}
+
+
+   
+
+<div class="rev">
+    {% for review in movie.review_set.all %}
+   <div class="review-box">
+    <b>{{review.user.username}}</b>
+    <p>{{review.comment}}</p>
+    <small>{{review.created_at}}</small>
+   </div>
+   {% empty %}
+      <p>NO reviews yet</p>
+
+    {% endfor %}
+</div>
+<a href="/movie_list/" class="back-btn">⬅ Back to Movies</a>
+
+
+
+
+</body>
+</html>

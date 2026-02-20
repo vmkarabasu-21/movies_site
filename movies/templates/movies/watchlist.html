@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    body {
+    background: #141414;
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0;
+    color: white;
+}
+
+/* Heading */
+h2 {
+    text-align: center;
+    color: #e50914;
+    margin-top: 30px;
+    font-size: 32px;
+}
+
+/* Grid Container */
+.container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 25px;
+    padding: 40px;
+}
+
+/* Movie Card */
+.card {
+    background: #1f1f1f;
+    border-radius: 10px;
+    overflow: hidden;
+    transition: 0.3s;
+    position: relative;
+}
+
+/* Hover Effect */
+.card:hover {
+    transform: scale(1.07);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.8);
+}
+
+/* Red Bottom Line Effect */
+.card::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 4px;
+    width: 0%;
+    background: #e50914;
+    transition: 0.4s;
+}
+
+.card:hover::after {
+    width: 100%;
+}
+
+/* Movie Image */
+.card img {
+    width: 100%;
+    height: 320px;
+    object-fit: cover;
+}
+
+/* Movie Title */
+.card h3 {
+    padding: 12px;
+    font-size: 18px;
+    margin: 0;
+}
+
+/* Remove Link Style */
+.card a {
+    text-decoration: none;
+    color: white;
+}
+
+/* Empty Text */
+.container p {
+    grid-column: 1 / -1;
+    text-align: center;
+    font-size: 20px;
+    color: #bbb;
+}
+
+</style>
+<body>
+   <h2>❤️ My Watchlist</h2>
+
+<div class="container">
+{% for item in movies %}
+    <div class="card">
+        <a href="/movie/{{ item.movie.id }}/">
+            <img src="{{ item.movie.poster.url }}">
+            <h3>{{ item.movie.title }}</h3>
+        </a>
+    </div>
+{% empty %}
+    <p>No movies in watchlist</p>
+{% endfor %}
+</div>
+ 
+</body>
+</html>
