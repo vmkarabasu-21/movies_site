@@ -1,5 +1,5 @@
 asgiref==3.11.0
-Django==5.0.6
+Django==6.0
 future==1.0.0
 gunicorn==25.1.0
 mime==0.1.0
