@@ -71,7 +71,7 @@ def login_view(request):
         else:
             error = "Invalid username or password"
 
-    return render(request, "movies/login.html", {"error": error})
+    return render(request, "movies/movie_list.html", {"error": error})
 
 def logout_view(request):
     logout(request)
